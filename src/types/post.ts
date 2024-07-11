@@ -4,7 +4,7 @@ export interface Post {
   content: string;
   createdAt: string;
   updatedAt: string;
-  Userid: string;
+  UserId: number;
 }
 
 // export interface Post extends InitPostType{

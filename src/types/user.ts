@@ -1,6 +1,6 @@
 export interface UsersInfo {
   id: number;
-  korean_name: string;
+  name: string;
   username: string;
   email: string;
   phoe: string;
