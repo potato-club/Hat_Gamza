@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import UserProfile from "../../../api/UserProfile";
+import { User } from "../../../types/User";
+import { fetchUser } from "../../../api/fetchUser";
 
 const Profile = () => {
+
+  const [user,setUser] = useState<User | null>(null);
+
+  useEffect(()=>{
+    const fetchData = async() => {
+      try {
+        const fetchUserData = await fetchUser();
+        setUser(fetchUserData);  
+      } catch (error) {
+        throw error;
+      }
+    }
+    fetchData();
+  },[]);
 
   const ClickMyFile = () => {
     alert('내 프로필로 이동');
@@ -10,7 +26,7 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <ProfileImg onClick={ClickMyFile}>
-        <UserProfile/>
+        {user?.name}
       </ProfileImg>
     </ProfileContainer>
   );

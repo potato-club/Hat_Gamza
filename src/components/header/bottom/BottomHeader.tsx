@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import YesterdayPostComment from './YesterdayPostComment';
 
 const BottomHeader = () => {
 
@@ -11,7 +12,9 @@ const BottomHeader = () => {
             <ToUserProfile>
                 <ClickSpan onClick={ClickToUser}>전체 유저 프로필로 이동</ClickSpan>
             </ToUserProfile>
-            <YesterdayInfo/>
+            <YesterdayInfo>
+                <YesterdayPostComment/>
+            </YesterdayInfo>
         </BottomContainer>
     );
 };
@@ -43,6 +46,7 @@ border: 1px solid;
 background-color: white;
 width: 650px;
 height: 60px;
+display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
