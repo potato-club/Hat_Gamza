@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import PostList from "./components/Post/PostList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppBody>
+        <PostList />
+      </AppBody>
     </div>
   );
 }
+
+const AppBody = styled.div`
+  display: flex;
+  width: 1440px;
+  height: 978px;
+  background-color: #444444;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default App;
