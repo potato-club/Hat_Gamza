@@ -49,7 +49,9 @@ function PostList() {
           ))}
         </PostBox>
       </PostListContainer>
-
+      <WritingButton>
+        <button onClick={() => alert("새 글 작성하기")}> 글쓰기 </button>
+      </WritingButton>
       <Pagination>
         {currentPage > 1 && (
           <button onClick={() => jumpToPage(currentPage - 1)}> {"<"} </button>
@@ -81,6 +83,18 @@ const PostBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+
+const WritingButton = styled.div`
+  display: flex;
+  justify-content: end;
+  button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
 `;
 
 const Pagination = styled.div`
