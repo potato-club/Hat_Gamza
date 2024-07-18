@@ -1,3 +1,5 @@
 export interface Comment{
-    id:number
+    id:number;
+    content:string;
+    UserId: number;
 }

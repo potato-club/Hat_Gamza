@@ -4,11 +4,11 @@ export interface User{
     username:string;
     email:string;
     website:string;
-    province:string;
-    city:string;
-    district:string;
-    street:string;
-    zipcode:string
+    // province:string;
+    // city:string;
+    // district:string;
+    // street:string;
+    // zipcode:string
     createdAt:string;
-    updatedAt:string
+    // updatedAt:string
 }
