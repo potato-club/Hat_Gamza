@@ -17,7 +17,7 @@ function PostItem({ post }: PostItemProps) {
 
 const PostItemLi = styled.li`
   display: flex;
-  background-color: gray;
+  background-color: aliceblue;
   width: 1000px;
   list-style: none;
   margin: 0px;
