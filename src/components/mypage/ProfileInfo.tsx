@@ -17,6 +17,8 @@ const ProfileInfo = () => {
             }
         }
         fetchData();
+
+
     },[]);
 
     return (

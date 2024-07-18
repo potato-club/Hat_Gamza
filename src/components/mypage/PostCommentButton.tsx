@@ -1,12 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PostCommentButton = () => {
+interface ButtonTypeProps{
+    SelectType: (type:string) => void;
+}
+
+const PostCommentButton: React.FC<ButtonTypeProps> = ({SelectType}) => {
+
+    const handleSelectedType = (type:string) => {
+        SelectType(type);
+    }
+
     return (
         <Container>
-            <Buttons>개시물</Buttons>
-            <Buttons>댓글</Buttons>
-            <Buttons>할일</Buttons>
+            <Buttons onClick={() => handleSelectedType('post')}>개시물</Buttons>
+            <Buttons onClick={() => handleSelectedType('comment')}>댓글</Buttons>
+            <Buttons onClick={() => handleSelectedType('todo')}>할일</Buttons>
         </Container>
     );
 };
