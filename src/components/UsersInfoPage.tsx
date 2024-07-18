@@ -8,9 +8,6 @@ export default function UsersInfoPage() {
     <>
       <UserInfoWrap>
         <UsersInfo />
-        <UsersInfo />
-        <UsersInfo />
-        <UsersInfo />
       </UserInfoWrap>
     </>
   );

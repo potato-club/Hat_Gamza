@@ -3,10 +3,12 @@ import styled from "styled-components";
 
 export default function LeftBox() {
   return (
-    <UserLeftBox>
-      <Avata></Avata>
-      <AvataName>테스트</AvataName>
-    </UserLeftBox>
+    <>
+      <UserLeftBox>
+        <Avata></Avata>
+        <AvataName>테스트</AvataName>
+      </UserLeftBox>
+    </>
   );
 }
 

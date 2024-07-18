@@ -12,7 +12,7 @@ interface User {
 
 interface StoreState {
   users: User[];
-  setUsers: (users: User[]) => void; // 이해가 안댑니다.
+  setUsers: (users: User[]) => void;
 }
 
 const useStore = create<StoreState>((set) => ({
@@ -39,17 +39,14 @@ export default function Store() {
           const comms = commsRes.data;
 
           setUsers(users);
-          // console.log("users:", users);
-          // console.log("posts:", posts);
-          // console.log("todos:", todos);
-          // console.log("comms:", comms);
+          console.log("users:", users);
 
-          // console.log(posts[0].id); // []숫자 + 1 이 출력된다. [5]라면 6 출력.
-          // console.log(
-          //   users.map((users) => {
-          //     return users.id;
-          //   })
-          // );
+          console.log(posts[0].id); // []숫자 + 1 이 출력된다. [5]라면 6 출력.
+          console.log(
+            users.map((users) => {
+              return users.id;
+            })
+          );
         })
       )
       .catch((error) => console.log(error));

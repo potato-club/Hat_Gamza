@@ -1,27 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import useStore from "../Store";
+import axios from "axios";
+import { fetchUser } from "../api/fetchUsers";
+import { Users } from "../types/users";
 
-interface User {
-  name: string;
-  address: string;
-  phone: string;
-  email: string;
-  website: string;
-}
+export default function RightBox({ number }) {
+  const [users, setUsers] = useState<Users[]>([]);
 
-export default function RightBox() {
-  // const users = useStore((state) => state.users);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchUser();
+        setUsers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <UserRightBox>
-      <p>이름: </p>
-      <p>주소지:</p>
-      <p>전화번호:</p>
-      <p>email:</p>
-      <p>website:</p>
-    </UserRightBox>
-  );
+    <>
+      <UserRightBox>
+        <p>이름: {users[number]?.name}</p>
+        <p>주소지: {users[number]?.city}</p>
+        <p>전화번호: {users[number]?.phone}</p>
+        <p>email: {users[number]?.email} </p>
+        <p>website: {users[number]?.website} </p>
+      </UserRightBox>
+    </>
+  ); //[ && ]
 }
 
 const UserRightBox = styled.div`
@@ -31,10 +39,10 @@ const UserRightBox = styled.div`
   background-color: darkcyan;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  font-size: 24px;
+  font-size: 22px;
 
   p {
     white-space: pre-line;
-    margin: 26px;
+    margin: 24px;
   }
 `;
