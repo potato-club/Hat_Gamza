@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { fetchUser } from "../api/fetchUsers";
 import { Users } from "../types/users";
 
 export default function RightBox({ number }) {
   const [users, setUsers] = useState<Users[]>([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {

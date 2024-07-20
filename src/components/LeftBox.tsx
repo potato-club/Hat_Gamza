@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function LeftBox() {
+import { fetchUser } from "../api/fetchUsers";
+import { Users } from "../types/users";
+
+export default function LeftBox({ number }) {
+  const [users, setUsers] = useState<Users[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchUser();
+        setUsers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <UserLeftBox>
-        <Avata></Avata>
-        <AvataName>테스트</AvataName>
+        <Avatar></Avatar>
+        <AvatarName>{users[number]?.username}</AvatarName>
       </UserLeftBox>
     </>
   );
@@ -24,7 +40,7 @@ const UserLeftBox = styled.div`
   flex-wrap: wrap;
 `;
 
-const Avata = styled.div`
+const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +51,7 @@ const Avata = styled.div`
   background-color: pink;
 `;
 
-const AvataName = styled.div`
+const AvatarName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,4 +62,5 @@ const AvataName = styled.div`
   border-radius: 10px;
   border: 1px blue solid;
   margin-bottom: auto;
+  padding: 5px;
 `;
