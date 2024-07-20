@@ -4,7 +4,11 @@ import styled from "styled-components";
 import { fetchUser } from "../api/fetchUsers";
 import { Users } from "../types/users";
 
-export default function LeftBox({ number }) {
+interface LeftBoxProps {
+  number: number;
+}
+
+const LeftBox: React.FC<LeftBoxProps> = ({ number }) => {
   const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +30,7 @@ export default function LeftBox({ number }) {
       </UserLeftBox>
     </>
   );
-}
+};
 
 const UserLeftBox = styled.div`
   display: flex;
@@ -64,3 +68,5 @@ const AvatarName = styled.div`
   margin-bottom: auto;
   padding: 5px;
 `;
+
+export default LeftBox;

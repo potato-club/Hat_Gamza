@@ -1,6 +1,11 @@
 import React from "react";
+import { PaginationProps } from "../types/paginationProps";
 
-const Pagination = ({ totalPosts, postsPerPage, setCurrentPage }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  totalPosts,
+  postsPerPage,
+  setCurrentPage,
+}) => {
   let pages = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {

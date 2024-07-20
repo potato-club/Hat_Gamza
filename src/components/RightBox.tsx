@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { fetchUser } from "../api/fetchUsers";
 import { Users } from "../types/users";
 
-export default function RightBox({ number }) {
+interface RightBoxProps {
+  number: number;
+}
+
+const RightBox: React.FC<RightBoxProps> = ({ number }) => {
   const [users, setUsers] = useState<Users[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +32,7 @@ export default function RightBox({ number }) {
       </UserRightBox>
     </>
   ); //[ && ]
-}
+};
 
 const UserRightBox = styled.div`
   /* display: flex; */
@@ -44,3 +48,5 @@ const UserRightBox = styled.div`
     margin: 24px;
   }
 `;
+
+export default RightBox;
