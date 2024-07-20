@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Post } from '../../types/Post';
 import { User } from '../../types/User';
 import { fetchPost } from '../../api/fetchPost';
-import { fetchUser } from '../../api/fetchUser';
 import { fetchComment } from '../../api/fetchComment';
 import { Comment } from '../../types/Comment';
 import { Todo } from '../../types/Todo';
@@ -11,15 +10,15 @@ import { fetchTodo } from '../../api/fetchTodo';
 
 interface ShowingProp{
     type:string;
+    user: User | null;
 }
 
-const Showing: React.FC<ShowingProp> = ({type}:any) => {
+const Showing: React.FC<ShowingProp> = ({type, user}) => {
 
     console.log({type});
 
     const [posts,setPosts] = useState<Post[]>([]);
     const [comments,setComments] = useState<Comment[]>([]);
-    const [user,setUser] = useState<User | null>(null);
     const [currentpage, setCurrentpage] = useState<number>(1);
     const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -27,12 +26,10 @@ const Showing: React.FC<ShowingProp> = ({type}:any) => {
         const fetchData = async() => {
         try {
             const fetchPostData = await fetchPost();
-            const fetchUserData = await fetchUser();
             const fetchCommentData = await fetchComment();
             const fetchTodoData = await fetchTodo();
             setPosts(fetchPostData);
             setComments(fetchCommentData);
-            setUser(fetchUserData);
             setTodos(fetchTodoData);
         } catch (error) {
             throw error;
@@ -61,8 +58,6 @@ const Showing: React.FC<ShowingProp> = ({type}:any) => {
     } else if(type === 'todo'){
         DataArray = MakeTDArray(filterTodo,5);
     }
-    
-
 
     const handleCurrentPage = (index:number) => {
         setCurrentpage(index);

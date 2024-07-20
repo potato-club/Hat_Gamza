@@ -3,6 +3,9 @@ import './global.css';
 import Header from './components/header/Header';
 import styled from 'styled-components';
 import MianMypage from './components/mypage/MianMypage';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (

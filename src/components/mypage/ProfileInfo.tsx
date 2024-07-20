@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import { User } from '../../types/User';
-import { fetchUser } from '../../api/fetchUser';
 import styled from 'styled-components';
 
-const ProfileInfo = () => {
+interface ProfileProp{
+    user: User | null;
+}
 
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const fetchUserData = await fetchUser();
-                setUser(fetchUserData);
-            } catch (error) {
-                throw error;
-            }
-        }
-        fetchData();
-
-
-    },[]);
+const ProfileInfo: React.FC<ProfileProp> = ({user}) => {
 
     return (
         <>

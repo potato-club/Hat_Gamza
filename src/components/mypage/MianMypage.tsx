@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileInfo from './ProfileInfo';
 import styled from 'styled-components';
 import ChangeProfile from './ChangeProfile';
 import PostCommentButton from './PostCommentButton';
 import Showing from './Showing';
+import { User } from '../../types/User';
+import { fetchUser } from '../../api/fetchUser';
 
 
-const MianMypage = () => {
+const MianMypage: React.FC = () => {
 
     const [tpye,setType] = useState<string>('post');
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fetchUserData = await fetchUser();
+                setUser(fetchUserData);
+            } catch (error) {
+                throw error;
+            }
+        }
+        fetchData();
+    },[])
 
     const handleType = (type:string) => {
         setType(type);
@@ -17,11 +32,11 @@ const MianMypage = () => {
     return (
         <Container>
             <ProContainer>
-                <ProfileInfo/>
-                <ChangeProfile/>
+                <ProfileInfo user={user}/>
+                <ChangeProfile user={user}/>
            </ProContainer>
            <PostCommentButton SelectType={handleType}/>
-           <Showing type={tpye}/>
+           <Showing type={tpye} user={user}/>
         </Container>
         
     );
